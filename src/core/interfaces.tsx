@@ -1,15 +1,26 @@
 export interface cronObject {
+    repeat: string,
+    repeats: Array<repeat>;
     startMinute: number;
     startHour: number;
     daysOfMonth: Array<number>;
     daysStep: number;
-    allDays: boolean;
+    daysOfWeek: Array<number>;
     months: Array<number>;
     monthsStep: number;
-    allMonths: boolean;
-    daysOfWeek: Array<number>;
     numberWeek: number | string;
-    allWeek: boolean;
     yearsStep: number;
-    allYears: boolean;
+    setRepeat: (newRepeat: string)=>void,
+    name: string,
+    cron: string
+}
+
+export interface RepeatState {
+    repeat: string,
+    selectRepeat: (newRepeat: string)=>void
+}
+
+export interface repeat {
+    name: string,
+    key: string
 }

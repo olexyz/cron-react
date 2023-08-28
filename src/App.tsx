@@ -1,18 +1,15 @@
 import './App.css';
 import Main from "./components/Main.tsx";
-import {useState} from "react";
 import CronTabs from "./components/Tabs.tsx";
-
+import {useRepeatStore} from "./core/store.tsx";
 function App() {
-    const [value, setValue] = useState('* * * * * * *');
-    const createCronString = (newValue: string) =>{
-        setValue(newValue);
-    }
+  let name = useRepeatStore(state => state.name)
+  let cron = useRepeatStore(state => state.cron)
   return (
     <div className="App">
-        <Main value={'* * * * * * *'} label="Строка крон"/>
-        <Main value={value} label="Описание"/>
-        <CronTabs change={createCronString} />
+        <Main value={cron} label="Строка крон"/>
+        <Main value={name} label="Описание"/>
+        <CronTabs/>
     </div>
   );
 }
