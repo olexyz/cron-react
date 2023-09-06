@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import './components.css';
 import {Box, Checkbox, FormControlLabel} from "@mui/material";
-
+import {useRepeatStore} from "../core/store.tsx";
 const Weekly = () => {
     const weekdays = [
         {name:'Пн', longname: 'Понедельник', key:1},
@@ -12,13 +12,15 @@ const Weekly = () => {
         {name:'Сб', longname: 'Суббота', key:6},
         {name:'Вс', longname: 'Воскресенье', key:7}
     ];
-    let [week, setWeek] = useState(new Array(weekdays.length).fill(true))
+    const setWeek = useRepeatStore(state=>state.setWeek)
+    let [week, _setWeek] = useState(new Array(weekdays.length).fill(true))
+
     const selectWeek = (position)=>{
         const updatedCheckedWeek = week.map((item, index) => {
                 return index === position ? !item : item
             }
         );
-
+        _setWeek(updatedCheckedWeek);
         setWeek(updatedCheckedWeek);
     }
     return (

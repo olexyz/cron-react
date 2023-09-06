@@ -31,7 +31,6 @@ const CronTabs = () => {
             <TabPanel value={navItems[0].key} key={navItems[0].key}>Ежедневно</TabPanel>
             <TabPanel value={navItems[1].key} key={navItems[1].key}><Weekly></Weekly></TabPanel>
             <TabPanel value={navItems[2].key} key={navItems[2].key}>Ежемесячно</TabPanel>
-            <TabPanel value={navItems[3].key} key={navItems[3].key}>Ежегодно</TabPanel>
         </TabContext>
     );
 };

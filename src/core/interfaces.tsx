@@ -11,6 +11,7 @@ export interface cronObject {
     numberWeek: number | string;
     yearsStep: number;
     setRepeat: (newRepeat: string)=>void,
+    setWeek: (newWeek: any[])=>void,
     name: string,
     cron: string
 }
