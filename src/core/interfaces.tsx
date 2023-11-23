@@ -13,7 +13,8 @@ export interface cronObject {
     setRepeat: (newRepeat: string)=>void,
     setWeek: (newWeek: any[])=>void,
     name: string,
-    cron: string
+    cron: string,
+    setDay: (newDayStep: number)=>void,
 }
 
 export interface RepeatState {

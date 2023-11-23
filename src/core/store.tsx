@@ -15,9 +15,15 @@ export const useRepeatStore = create<cronObject>((set, get)=>({
     yearsStep: 1,
     cron: '* * * * * *',
     name: 'Ежедневно',
-    setRepeat: (newRepeat)=> {
+    setRepeat: (newRepeat) => {
         set({ repeat: newRepeat })
         set({ name: get().repeats.find(el=>el.key===newRepeat).name })
+    },
+    setDay: (newDayStep: number) => {
+        let _cron = get().cron.split(' ');
+        _cron[2] = newDayStep.toString();
+        set({ daysStep: newDayStep });
+        set({ cron: _cron.join(' ')});
     },
     setWeek: (newWeek:any[]) => {
         let _newWeekName = [];
@@ -29,10 +35,10 @@ export const useRepeatStore = create<cronObject>((set, get)=>({
                 days.push(i);
             }
         });
-        let _cron = get().cron.split(' ')
-        _cron[5] = days.length!=7?days.join(','):'*';
+        let _cron = get().cron.split(' ');
+        _cron[5] = days.length!==7?days.join(','):'*';
         set({daysOfWeek: days});
-        set({ name: 'Еженедельно'+(days.length!=7?', по '+ _newWeekName.join(','):'') })
+        set({ name: 'Еженедельно'+(days.length!==7?', по '+ _newWeekName.join(','):'') })
         set({ cron: _cron.join(' ')})
     },
 }))
