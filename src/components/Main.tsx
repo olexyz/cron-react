@@ -1,8 +1,8 @@
 import React from "react"
-import {TextField} from "@material-ui/core";
 import './components.css';
+import {TextField} from "@mui/material";
 
-const Main = ({value, label}) => {
+const Main = ({value, label}: any) => {
     return (
         <TextField id="filled-basic" label={label} variant="filled" className="Main" disabled={true} value={value} />
     );

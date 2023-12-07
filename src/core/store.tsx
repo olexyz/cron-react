@@ -1,7 +1,7 @@
 import {create} from "zustand";
-import {cronObject} from "./interfaces";
+import {cronObject, repeat} from "./interfaces";
 
-export const useRepeatStore = create<cronObject>((set, get)=>({
+export const useRepeatStore = create<cronObject>((set: any, get: any)=>({
     repeats: [{name:'Ежедневно', key:'allDays'}, {name:'Еженедельно', key:'allWeek'}, {name:'Ежемесячно', key:'allMonth'}],
     repeat: 'allDays',
     startMinute: 0,
@@ -17,18 +17,18 @@ export const useRepeatStore = create<cronObject>((set, get)=>({
     name: 'Ежедневно',
     setRepeat: (newRepeat) => {
         set({ repeat: newRepeat })
-        set({ name: get().repeats.find(el=>el.key===newRepeat).name })
+        set({ name: get().repeats.find((el: repeat)=>el.key===newRepeat).name })
     },
     setDay: (newDayStep: number) => {
         let _cron = get().cron.split(' ');
-        _cron[2] = newDayStep.toString();
+        _cron[2] = newDayStep===1?'*':newDayStep.toString();
         set({ daysStep: newDayStep });
         set({ cron: _cron.join(' ')});
     },
     setWeek: (newWeek:any[]) => {
-        let _newWeekName = [];
+        let _newWeekName: any[]= [];
         const week = ['пн', 'вт', 'ср', 'чт', 'пт', 'cб', 'вс'];
-        let days = []
+        let days: any[] = [];
         newWeek.forEach((el,i)=>{
             if(el) {
                 _newWeekName.push(week[i])

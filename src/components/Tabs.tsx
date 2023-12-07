@@ -3,9 +3,9 @@ import './components.css';
 import {Tab, Tabs} from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
-import Weekly from "./Weekly.tsx";
-import {useRepeatStore} from "../core/store.tsx";
-import Daily from "./Daily.tsx";
+import Weekly from "./Weekly";
+import {useRepeatStore} from "../core/store";
+import Daily from "./Daily";
 
 const CronTabs = () => {
     const selectTab = useRepeatStore(state=>state.setRepeat)

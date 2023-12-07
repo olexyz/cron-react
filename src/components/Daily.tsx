@@ -1,10 +1,11 @@
 import React from "react"
 import './components.css';
 import {Box, TextField} from "@mui/material";
-import {useRepeatStore} from "../core/store.tsx";
+import {useRepeatStore} from "../core/store";
+import {cronObject} from "../core/interfaces";
 const Daily = () => {
-    const setDay = useRepeatStore(state=>state.setDay);
-    const dayStep = useRepeatStore(state=>state.daysStep);
+    const setDay = useRepeatStore((state: cronObject)=>state.setDay);
+    const dayStep = useRepeatStore((state: cronObject)=>state.daysStep);
 
     return (
             <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
